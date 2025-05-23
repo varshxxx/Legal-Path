@@ -1,0 +1,151 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      background-color: rgba(250, 235, 215, 0.301); 
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ffffff;
+      color: #9b0620;
+      cursor: pointer;
+    }
+    button:hover {
+     transform: translateY(5px);
+     filter: brightness(70%);
+    }
+    @keyframes up {
+      0% { transform: translateY(500%); }
+      100% { transform: translateY(0); }
+      
+    }
+    .downCont{
+      animation: up 1s;
+      transition: 0.5s;
+    }
+    .downCont:hover{
+      transform: scale(1.1);
+      transition: 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 40%;background-color:#9b061fd5;display:flex;justify-content:center;flex-direction:column;align-items:center;padding:20px;border-radius:20px" class="downCont">  
+    <h1 style="color: white;">Download Files</h1>
+<div>
+  <button onclick="downloadFIR()">Download FIR</button>
+  <button onclick="downloadPetition()">Download Petition</button>
+</div>
+</div>
+
+
+  <script>
+    function downloadFIR() {
+      alert('Download FIR clicked');
+      // Add logic for downloading FIR
+    }
+
+    function downloadPetition() {
+      alert('Download Petition clicked');
+      // Add logic for downloading Petition
+    }
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      background-color: rgba(250, 235, 215, 0.301); 
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ffffff;
+      color: #9b0620;
+      cursor: pointer;
+    }
+    button:hover {
+      transform: translateY(5px);
+      filter: brightness(70%);
+    }
+    @keyframes up {
+      0% { transform: translateY(500%); }
+      100% { transform: translateY(0); }
+    }
+    .downCont {
+      animation: up 1s;
+      transition: 0.5s;
+    }
+    .downCont:hover {
+      transform: scale(1.1);
+      transition: 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 40%; background-color: #9b061fd5; display: flex; justify-content: center; flex-direction: column; align-items: center; padding: 20px; border-radius: 20px" class="downCont">
+    <h1 style="color: white;">Download Files</h1>
+    <div>
+      <button onclick="downloadFIR()">Download FIR</button>
+      <button onclick="downloadPetition()">Download Petition</button>
+    </div>
+  </div>
+
+  <script>
+    function downloadFIR() {
+      const firFileData = sessionStorage.getItem('firFile');
+      if (firFileData) {
+        const a = document.createElement('a');
+        a.href = firFileData;
+        a.download = 'fir-file.pdf'; // You can change the filename here
+        a.click();
+      } else {
+        alert('No FIR file found.');
+      }
+    }
+
+    function downloadPetition() {
+      const petitionFileData = sessionStorage.getItem('petitionFile');
+      if (petitionFileData) {
+        const a = document.createElement('a');
+        a.href = petitionFileData;
+        a.download = 'petition-file.pdf'; // Change filename as needed
+        a.click();
+      } else {
+        alert('No Petition file found.');
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

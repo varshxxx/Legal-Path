@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload and Navigate</title>
+  <style>
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      margin: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Page 1 -->
+  <div id="upload-page" style="display: block;">
+    <h2>Upload Page</h2>
+    <div>
+      <label for="fir-upload">Upload FIR:</label>
+      <input type="file" id="fir-upload" />
+    </div>
+    <div>
+      <label for="petition-upload">Upload Petition:</label>
+      <input type="file" id="petition-upload" />
+    </div>
+    <button onclick="submitFiles()">Submit</button>
+    <div id="cards-container"></div>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="download-page" style="display: none;">
+    <h2>Download Page</h2>
+    <button onclick="downloadFile('fir')">Download FIR</button>
+    <button onclick="downloadFile('petition')">Download Petition</button>
+    <button onclick="goBack()">Back</button>
+  </div>
+
+  <script>
+    // Function to handle the file submission and create a card
+    function submitFiles() {
+      const firFile = document.getElementById('fir-upload').files[0];
+      const petitionFile = document.getElementById('petition-upload').files[0];
+
+      if (!firFile || !petitionFile) {
+        alert("Please upload both FIR and Petition files.");
+        return;
+      }
+
+      const cardContainer = document.getElementById('cards-container');
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const nextButton = document.createElement('button');
+      nextButton.textContent = 'Next';
+      nextButton.onclick = () => navigateToDownloadPage();
+
+      card.textContent = `Uploaded Files: ${firFile.name} and ${petitionFile.name}`;
+      card.appendChild(nextButton);
+      cardContainer.appendChild(card);
+
+      alert("Files submitted successfully!");
+      // Optionally reset file inputs
+      document.getElementById('fir-upload').value = '';
+      document.getElementById('petition-upload').value = '';
+    }
+
+    // Function to navigate to the download page
+    function navigateToDownloadPage() {
+      document.getElementById('upload-page').style.display = 'none';
+      document.getElementById('download-page').style.display = 'block';
+    }
+
+    // Function to simulate file downloads
+    function downloadFile(type) {
+      alert(`Downloading ${type.toUpperCase()} file...`);
+      // Add actual file download logic here if needed
+    }
+
+    // Function to go back to the upload page
+    function goBack() {
+      document.getElementById('download-page').style.display = 'none';
+      document.getElementById('upload-page').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+
+
+Lawyer_UI/law.js
+function createCard() {
+    const cardsContainer = document.getElementById('cardsContainer');
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <p>Files Uploaded Successfully</p>
+      <button class='butsub' onclick="goToNextPage()" >Next</button>
+    `;
+
+    cardsContainer.appendChild(card);
+  }
+
+  function goToNextPage() {
+    window.location.href = 'download.html';
+  }
+
+    function submitFiles() {
+    alert('Files Submitted');
+    createCard();
+  }
+
+  function submitFiles() {
+    const firFile = document.getElementById('fir-upload').files[0];
+    const petitionFile = document.getElementById('petition-upload').files[0];
+
+    if (!firFile || !petitionFile) {
+      alert("Please upload both FIR and Petition files.");
+      return;
+    }
+
+    const cardContainer = document.getElementById('cards-container');
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.onclick = () => navigateToDownloadPage();
+
+    card.textContent = `Uploaded Files: ${firFile.name} and ${petitionFile.name}`;
+    card.appendChild(nextButton);
+    cardContainer.appendChild(card);
+
+    alert("Files submitted successfully!");
+    // Optionally reset file inputs
+    document.getElementById('fir-upload').value = '';
+    document.getElementById('petition-upload').value = '';
+  }
+
+  function triggerFileUpload(inputId) {
+    document.getElementById(inputId).click();
+  }
+
+  // Function to handle file selection
+  function handleFileSelection(type, input) {
+    if (input.files.length > 0) {
+      selectedFiles[type.toLowerCase()] = input.files[0];
+      alert(`${type} file selected: ${input.files[0].name}`);
+    }
+  }
+const selectedFiles = { fir: null, petition: null };
+
+    function triggerFileUpload(inputId) {
+      document.getElementById(inputId).click();
+    }
+
+    function handleFileSelection(type, input) {
+      if (input.files.length > 0) {
+        selectedFiles[type.toLowerCase()] = input.files[0];
+        alert(`${type} file selected: ${input.files[0].name}`);
+      }
+    }
+
+    function submitFiles() {
+      const { fir, petition } = selectedFiles;
+
+      if (!fir || !petition) {
+        alert("Please upload both FIR and Petition files.");
+        return;
+      }
+
+      const cardContainer = document.getElementById('cardsContainer');
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const nextButton = document.createElement('button');
+      nextButton.className = 'but';
+      nextButton.textContent = 'Next';
+      nextButton.onclick = () => navigateToDownloadPage();
+
+      card.textContent = `Uploaded Files: ${fir.name} and ${petition.name}`;
+      card.appendChild(nextButton);
+      cardContainer.appendChild(card);
+
+      alert("Files submitted successfully!");
+
+      // Reset file inputs
+      document.getElementById('fir-input').value = '';
+      document.getElementById('petition-input').value = '';
+      selectedFiles.fir = null;
+      selectedFiles.petition = null;
+    }
+
+    function navigateToDownloadPage() {
+      window.location.href = 'download.html';
+    }
+Lawyer_UI/law.html
+div style="width: 90%;height:20vh;display:flex;flex-direction:column;margin:auto;">
+<h1 style="color: #9b0620;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">UPLOAD AND SUBMIT</h1>
+<br>
+<div style="width: 100%;display:flex;justify-content:space-between;margin:auto;">
+    <div class="bbox">
+         <!-- <button onclick="uploadFIR()" class="but">Upload FIR</button> -->
+         <button onclick="triggerFileUpload('fir-input')" class="but">Upload FIR</button>
+    <input type="file" id="fir-input" class="hidden" onchange="handleFileSelection('FIR', this)" />
+    </div>
+
+    <div class="bbox">
+        <!-- <button onclick="uploadPetition()" class="but">Upload Petition</button> -->
+        <button onclick="triggerFileUpload('petition-input')" class="but">Upload Petition</button>
+    <input type="file" id="petition-input" class="hidden" onchange="handleFileSelection('Petition', this)" />
+    </div>
+
+    <div class="bbox">
+        <button onclick="submitFiles()" class="but">Submit</button>
+    </div>
+</div>
+
+</div>
+<br>
+<div id="cardsContainer"></div>
+<br><br><br>
+Upload_files/app.js
