@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Style for the header */
+        .head1 {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        .left-content .btn, .right-content .btn {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .right-content {
+            position: relative;
+        }
+        .language-container {
+            position: relative;
+        }
+        .language-container .btn {
+            cursor: pointer;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: #fff;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 10px;
+            list-style-type: none;
+            margin: 0;
+        }
+        .language-container:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu li {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .dropdown-menu li:hover {
+            background-color: #ddd;
+        }
+
+        /* Style for other sections */
+        .head2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .nlp-container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .footer-top {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+
+    <!-- NavBar-->
+    <div class="head1">
+        <div class="left-content">
+            <a href="https://ecommitteesci.gov.in/" class="btn">ECOMMITEE SUPREME COURT OF INDIA</a>
+        </div>
+        <div class="right-content">
+            <a href="#" class="btn" id="sitemap-link">Sitemap</a>
+            <div class="language-container">
+                <a href="#" class="btn" id="language-link">Language</a>
+                <ul id="language-dropdown" class="dropdown-menu">
+                    <li id="lang-en">English</li>
+                    <li id="lang-ta">Tamil</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content section -->
+    <div class="head2">
+        <h1 id="website-name">LEGALPATH</h1>
+    </div>
+
+    <!-- NLP Search Container -->
+    <div class="nlp-container">
+        <input type="text" id="nlpInput" placeholder="Search for legal terms...">
+        <button onclick="searchNLP()">Search</button>
+    </div>
+
+    <!-- Search Results Section -->
+    <div class="search-results" id="results">
+        <h3>Search Results:</h3>
+        <p id="resultText"></p>
+        <a id="resultLink" href="#" target="_blank"></a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-top">
+            <ul>
+                <li><a href="#">Feedback</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Website Policies</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Contact Us</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Help</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Language dictionary with English and Tamil translations
+        const translations = {
+            en: {
+                "website-name": "LEGALPATH",
+                "sitemap-link": "Sitemap",
+                "home-text": "Home",
+                "lawyer-text": "Lawyer",
+                "prisoner-text": "Prisoner",
+                "judge-text": "Judge",
+                "login-text": "Login",
+            },
+            ta: {
+                "website-name": "சட்டபாதை",
+                "sitemap-link": "சட்டவிடை",
+                "home-text": "முகப்பு",
+                "lawyer-text": "வழக்கறிஞர்",
+                "prisoner-text": "கைதிகள்",
+                "judge-text": "திபாகம்",
+                "login-text": "உள்நுழைவு",
+            }
+        };
+
+        // Function to switch languages
+        
+
+        // Language dropdown event listener
+        document.getElementById("lang-en").addEventListener("click", function() {
+            switchLanguage("en");
+        });
+
+        document.getElementById("lang-ta").addEventListener("click", function() {
+            switchLanguage("ta");
+        });
+
+        // Default language on page load
+        window.onload = () => {
+            switchLanguage("en"); // Default to English
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,553 @@
+
+
+<!-- single file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Records Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            justify-content: center;
+            margin: auto;
+            width: 95%;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid  #9b0620;
+            color: #9b0620;
+
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .view-files-btn {
+            background-color: #9b0620;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .pdf-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 90vh;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="judge.css">
+</head>
+<body>
+
+     
+    <!-- First Part: External link, Sitemap, Language (head1) -->
+    <div class="head1">
+        <div class="left-content">
+            <a href="https://ecommitteesci.gov.in/" class="btn">ECOMMITEE SUPREME COURT OF INDIA</a>
+        </div>
+        <div class="right-content">
+            <a href="#" class="btn" id="sitemap-link">Sitemap</a>
+            <div class="language-container">
+                <a href="#" class="btn" id="language-link">Language</a>
+                <ul id="language-dropdown" class="dropdown-menu">
+                    <li><a href="#">Tamil</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Part: Logo and Website Name (head2) -->
+    <div class="head2">
+        <img src="log.png" alt="Logo" height="80px" width="80px">
+        <div class="website-name">
+            <h1>LEGALPATH</h1>
+        </div>
+        <img src="min_law.png" alt="Logo" height="20px" width="300px" class="min_law">
+        
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <ul id="navbar">
+            <li><a href="#" style="font-size: 140%;">Home</a></li>
+            <li><a href="lawyer.html" style="font-size: 140%;">Lawyer</a></li>
+            <li><a href="#" style="font-size: 140%;">Prisoner</a></li>
+            <li><a href="judge.html" style="font-size: 140%;">Judge</a></li>
+            <li><a href="#" style="font-size: 140%;">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- SITEMAP Section -->
+    <div id="sitemap-content" style="display:none; padding: 20px; margin-top: 20px;">
+        <h2>SITEMAP</h2> <!-- Displaying "SITEMAP" text -->
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="lawyer.html">Lawyer</a></li>
+            <li><a href="#">Prisoner</a></li>
+            <li><a href="judge.html">Judge</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+
+    <div id="footer-content" style="display:none; padding: 20px; margin-top: 20px;">
+        <h2>FOOTER</h2> <!-- Displaying "FOOTER" text -->
+        <!-- Dynamic footer content will be inserted here by JavaScript -->
+    </div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+  <br><br>
+    <div id="cards-page">
+        <div class="card-container" id="card-container">
+       
+        </div>
+    </div>
+
+  
+    <div id="pdf-viewer-page" style="display: none;width:90%;margin:auto">
+        <div class="pdf-container">
+            <div id="pdf1" class="pdf-viewer"></div>
+            <div id="pdf2" class="pdf-viewer"></div>
+        </div>
+        <br>
+        <div class="controls">
+            <button onclick="goBackToCards()" style="width: 30%;font-family:monospace;padding:20px;" class="goback">Back to Records</button>
+        </div>
+    </div>
+    <br><br><br><br>
+
+    <div style="width: 100%;display:flex;justify-content:center;align-items:center;height:10vh" id="gs">
+        <button style="width: 30%;font-family:monospace;background-color:#9b0620;color:white;border-radius: 10px;height:80%;border:none;font-size:140%" class="generate_suggestion">Generate Suggestion</button>
+    </div>
+   
+<br><br>
+<div id="loading">Loading, please wait...</div>
+<div id="content">
+    <h1>1. Offense:</h1>
+    <p>Based on the FIR, the alleged offenses are:</p>
+    <ul>
+        <li><b>Section 294(b) IPC:</b> Obscene acts and songs.</li>
+        <li><b>Section 323 IPC:</b> Voluntarily causing hurt.</li>
+        <li><b>Section 447 IPC:</b> Criminal trespass.</li>
+    </ul>
+    <h1>2. Accused Background:</h1>
+    <p>The FIR lacks details about the accused. A detailed background in the bail application should include names, addresses, occupations, and other relevant biographical information.</p>
+    <h1>3. Legal Sections Applicable:</h1>
+    <p>The FIR mentions Sections 294(b), 323, and 447 of the IPC. The bail application should address these sections and justify why bail should be granted.</p>
+    <h1>4. Court Jurisdiction:</h1>
+    <p>The crime occurred in Kilpauk, Chennai, Tamil Nadu, under the jurisdiction of a Chennai court.</p>
+    <h1>5. Additional Factors:</h1>
+    <ul>
+        <li><b>Nature of the offenses:</b> Sections 294(b), 323, and 447 are not considered extremely serious.</li>
+        <li><b>Strength of evidence:</b> The bail application should argue if the prosecution’s case is weak or lacks sufficient evidence.</li>
+        <li><b>Tampering with evidence:</b> Address the likelihood of the accused interfering with the investigation.</li>
+        <li><b>Criminal history:</b> The accused should have no prior criminal record.</li>
+        <li><b>Sureties and cooperation:</b> Offering adequate sureties and an undertaking to cooperate strengthens the bail request.</li>
+    </ul>
+    <h1>Suggested Bail Application Format:</h1>
+    <p>To the Hon'ble Judge of [Specific Court Name and Jurisdiction], Chennai.</p>
+    <p><b>In the matter of Bail Application for the accused in FIR No. 229/2023</b></p>
+    <p><b>Most Respectfully Sheweth:</b></p>
+    <p>This application is for bail under Section 437 of the CrPC for [Name(s) of Accused], accused in FIR No. 229/2023 registered at Kilpauk Police Station, Chennai, under Sections 294(b), 323, and 447 IPC.</p>
+    <p>The accused are [Details of age, address, occupation, family background]. They have no prior criminal history, which can be verified.</p>
+    <p>The prosecution’s case is not strong and rests on [highlight weak evidence or lack of corroboration].</p>
+    <p>The accused are not flight risks and are willing to cooperate with the investigation. They will furnish adequate bail bonds and sureties and will not tamper with evidence or intimidate witnesses.</p>
+    <p>Relevant case laws and precedents support granting bail under similar circumstances.</p>
+    <p>Continued detention violates the accused’s fundamental rights under Article 21 of the Constitution.</p>
+    <p><b>PRAYER:</b></p>
+    <p>It is humbly prayed that this Hon'ble Court may be pleased to grant bail to the accused in FIR No. 229/2023, subject to conditions deemed fit by the Court.</p>
+</div>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <!-- FOOTER Section -->
+    <footer>
+        <div class="footer-top">
+            <ul>
+                <li><a href="#">Feedback</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Website Policies</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Contact Us</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Help</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Website is Owned and Content Managed by
+                <a href="https://lawmin.gov.in/" class="link">Ministry of Law & Justice </a> | Government of India
+            </p>
+            <div class="aicte-section">
+                <p><strong>Inaugurated by:</strong> <a href="https://www.aicte-india.org/" class="link">AICTE</a></p>
+                <p>(All India Council for Technical Education)</p>
+            </div>
+            <div class="footer-logos">
+                <img src="law.png" alt="Logo 1" height="200px" width="150px">
+                <img src="aicte.png" alt="Logo 2" height="200px" width="150px">
+                <img src="moe.png" alt="Logo 2" height="200px" width="150px">
+                <img src="tcs.png" alt="Logo 3" height="200px" width="150px">
+                <img src="educ.png" alt="Logo 4" height="200px" width="150px">
+            </div>
+            <div class="footer-disclaimer">
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        // Base URL of your backend server
+        const API_BASE_URL = 'http://localhost:3001';
+
+        // Fetch and display cards
+        async function fetchPDFRecords() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/pdf-records`);
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const records = await response.json();
+                const cardContainer = document.getElementById('card-container');
+                
+                // Clear any existing cards
+                cardContainer.innerHTML = '';
+                
+                records.forEach(record => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <h3>Record ID: ${record.id}</h3>
+                        <div class="name">
+                        <p>File 1: ${record.name1}</p>
+                        <p>File 2: ${record.name2}</p>
+                        <div>
+                        <button class="view-files-btn" onclick="viewFiles(${record.id})">View Files</button>
+                    `;
+                    cardContainer.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error fetching PDF records:', error);
+                alert('Failed to fetch PDF records. Please check the server connection.');
+            }
+        }
+
+        // View files for a specific record
+        function viewFiles(recordId) {
+            // Hide cards page
+            document.getElementById('cards-page').style.display = 'none';
+            document.getElementById('gs').style.display = 'none';
+            
+            // Show PDF viewer page
+            const pdfViewerPage = document.getElementById('pdf-viewer-page');
+            pdfViewerPage.style.display = 'block';
+
+            // Load PDFs
+            loadPDFs(recordId);
+        }
+
+        // Render PDF using PDF.js
+        async function renderPDF(pdfUrl, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Clear previous content
+
+            try {
+                // Fetch PDF data
+                const response = await fetch(pdfUrl);
+                const pdfBlob = await response.blob();
+                const pdfData = await pdfBlob.arrayBuffer();
+
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument({data: pdfData});
+                const pdf = await loadingTask.promise;
+
+                // Render first page
+                const page = await pdf.getPage(1);
+                const scale = 1.5;
+                const viewport = page.getViewport({scale: scale});
+
+                // Prepare canvas
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                const originalHeight = viewport.height;
+               const originalWidth = viewport.width;
+
+                // Scaling factor (e.g., reduce to 50% of original size)
+                const scaleFactor = 0.5;
+
+                // Set the new dimensions
+                canvas.height = originalHeight * scaleFactor;
+                canvas.width = originalWidth * scaleFactor;
+
+                // Apply scaling to the context
+                context.scale(scaleFactor, scaleFactor);
+
+                // Render page
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                await page.render(renderContext);
+
+                // Add canvas to container
+                container.appendChild(canvas);
+            } catch (error) {
+                console.error('Error rendering PDF:', error);
+                container.innerHTML = 'Could not load PDF';
+            }
+        }
+
+        
+
+        // Load PDFs for a specific record
+        function loadPDFs(recordId) {
+            // PDF 1
+            renderPDF(`${API_BASE_URL}/download/${recordId}/pdf1`, 'pdf1');
+
+            // PDF 2
+            renderPDF(`${API_BASE_URL}/download/${recordId}/pdf2`, 'pdf2');
+        }
+
+        // Go back to cards page
+        function goBackToCards() {
+            // Hide PDF viewer page
+            document.getElementById('pdf-viewer-page').style.display = 'none';
+            
+            // Show cards page
+            document.getElementById('cards-page').style.display = 'block';
+            document.getElementById('gs').style.display = 'flex';
+        }
+
+        // Fetch records when page loads
+        window.onload = fetchPDFRecords;
+    </script>
+    <script src="judge.js"></script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Records Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .view-files-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .pdf-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 90vh;
+        }
+        .pdf-viewer {
+            width: 48%;
+            height: 100%;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="cards-page">
+        <div class="card-container" id="card-container">
+            
+        </div>
+    </div>
+
+
+    <div id="pdf-viewer-page" style="display: none;">
+        <div class="pdf-container">
+            <div id="pdf1" class="pdf-viewer"></div>
+            <div id="pdf2" class="pdf-viewer"></div>
+        </div>
+        <div class="controls">
+            <button onclick="goBackToCards()">Back to Records</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        // Base URL of your backend server
+        const API_BASE_URL = 'http://localhost:3001';
+
+        // Fetch and display cards
+        async function fetchPDFRecords() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/pdf-records`);
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const records = await response.json();
+                const cardContainer = document.getElementById('card-container');
+                
+                // Clear any existing cards
+                cardContainer.innerHTML = '';
+                
+                records.forEach(record => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <h3>Record ID: ${record.id}</h3>
+                        <p>File 1: ${record.name1}</p>
+                        <p>File 2: ${record.name2}</p>
+                        <button class="view-files-btn" onclick="viewFiles(${record.id})">View Files</button>
+                    `;
+                    cardContainer.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error fetching PDF records:', error);
+                alert('Failed to fetch PDF records. Please check the server connection.');
+            }
+        }
+
+        // View files for a specific record
+        function viewFiles(recordId) {
+            // Hide cards page
+            document.getElementById('cards-page').style.display = 'none';
+            
+            // Show PDF viewer page
+            const pdfViewerPage = document.getElementById('pdf-viewer-page');
+            pdfViewerPage.style.display = 'block';
+
+            // Load PDFs
+            loadPDFs(recordId);
+        }
+
+        // Render PDF using PDF.js
+        async function renderPDF(pdfUrl, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Clear previous content
+
+            try {
+                // Fetch PDF data
+                const response = await fetch(pdfUrl);
+                const pdfBlob = await response.blob();
+                const pdfData = await pdfBlob.arrayBuffer();
+
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument({data: pdfData});
+                const pdf = await loadingTask.promise;
+
+                // Render first page
+                const page = await pdf.getPage(1);
+                const scale = 1.5;
+                const viewport = page.getViewport({scale: scale});
+
+                // Prepare canvas
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render page
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                await page.render(renderContext);
+
+                // Add canvas to container
+                container.appendChild(canvas);
+            } catch (error) {
+                console.error('Error rendering PDF:', error);
+                container.innerHTML = 'Could not load PDF';
+            }
+        }
+
+        // Load PDFs for a specific record
+        function loadPDFs(recordId) {
+            // PDF 1
+            renderPDF(`${API_BASE_URL}/download/${recordId}/pdf1`, 'pdf1');
+
+            // PDF 2
+            renderPDF(`${API_BASE_URL}/download/${recordId}/pdf2`, 'pdf2');
+        }
+
+        // Go back to cards page
+        function goBackToCards() {
+            // Hide PDF viewer page
+            document.getElementById('pdf-viewer-page').style.display = 'none';
+            
+            // Show cards page
+            document.getElementById('cards-page').style.display = 'block';
+        }
+
+        // Fetch records when page loads
+        window.onload = fetchPDFRecords;
+    </script>
+</body>
+</html> -->
+                
+

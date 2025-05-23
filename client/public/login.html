@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        .login-container {
+            background: #f2f1f1ae;
+            position: relative;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            /* From https://css.glass */
+            /* From https://css.glass */
+            background: rgb(255, 255, 255);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #9b0620;
+            
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #9b0620;
+        }
+        .login-container input, .login-container select, .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+           border: 1px solid #9b0620    ;
+            border-radius: 4px; 
+            box-sizing: border-box;
+            color: #9e1616;
+        }
+        .login-container button {
+            background-color: #9e1616;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            color: #9b0620;
+            background-color: white;
+            border: 2px solid #9b0620;
+            
+        }
+        .otp-section {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+     <!-- First Part: External link, Sitemap, Language (head1) -->
+     <div class="head1">
+        <div class="left-content">
+            <a href="https://ecommitteesci.gov.in/" class="btn">ECOMMITEE SUPREME COURT OF INDIA</a>
+        </div>
+        <div class="right-content">
+            <a href="#" class="btn" id="sitemap-link">Sitemap</a>
+            <div class="language-container">
+                <a href="#" class="btn" id="language-link">Language</a>
+                <ul id="language-dropdown" class="dropdown-menu">
+                    <li><a href="#">Tamil</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Part: Logo and Website Name (head2) -->
+    <div class="head2">
+        <img src="log.png" alt="Logo" height="80px" width="80px">
+        <div class="website-name">
+            <h1>LEGALPATH</h1>
+        </div>
+        <img src="min_law.png" alt="Logo" height="20px" width="300px" class="min_law">
+        
+    </div>
+
+    <!-- Navbar -->
+ 
+
+    <!-- SITEMAP Section -->
+    <div id="sitemap-content" style="display:none; padding: 20px; margin-top: 20px;">
+        <h2>SITEMAP</h2> <!-- Displaying "SITEMAP" text -->
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="lawyer.html">Lawyer</a></li>
+            <li><a href="#">Prisoner</a></li>
+            <li><a href="judge.html">Judge</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+
+
+<!-- <video src="bg1.mp4" muted loop autoplay class="bg"></video> -->
+<div class="part">
+    
+<div class="part1"></div>
+<div class="part2">
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required class="input">
+
+        <label for="aadhar">Aadhar Number</label>
+        <input type="text" id="aadhar" name="aadhar" required class="input">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required class="input">
+
+        <label for="userType">User Type</label>
+        <select id="userType" name="userType" required class="input">
+            <option value="">--Select--</option>
+            <option value="lawyer">Lawyer</option>
+            <option value="judge">Judge</option>
+        </select>
+
+        <button type="button" id="nextButton">Next</button>
+
+        <div class="otp-section" id="otpSection">
+            <label for="otp">Enter OTP</label>
+            <input type="text" id="otp" name="otp" required class="input">
+
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+
+<script>
+    const nextButton = document.getElementById('nextButton');
+    const otpSection = document.getElementById('otpSection');
+    const loginForm = document.getElementById('loginForm');
+
+    nextButton.addEventListener('click', () => {
+        otpSection.style.display = 'block';
+        nextButton.style.display = 'none';
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const aadhar = document.getElementById('aadhar').value;
+        const password = document.getElementById('password').value;
+        const userType = document.getElementById('userType').value;
+        const otp = document.getElementById('otp').value;
+
+        // Simple form validation
+        if (!username || !aadhar || !password || !userType || !otp) {
+            alert('Please fill all fields!');
+            return;
+        }
+
+        // Redirect to another page (example.html)
+        window.location.href = 'example.html';
+    });
+</script>
+
+</body>
+</html>

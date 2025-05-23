@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+
+    <!-- NavBar-->
+       <!-- First Part: External link, Sitemap, Language (head1) -->
+    <div class="head1">
+        <div class="left-content">
+            <a href="https://ecommitteesci.gov.in/" class="btn">e-COMMITEE SUPREME COURT OF INDIA</a>
+        </div>
+        <div class="right-content">
+            <a href="#" class="btn" id="sitemap-link">Sitemap</a>
+            <div class="language-container">
+                <a href="#" class="btn" id="language-link">Language</a>
+                <ul id="language-dropdown" class="dropdown-menu">
+                    <li id="lang-ta">Tamil</li>
+                    <li id="lang-en">English</li>
+                    <li id="lang-hin">Hindi</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Part: Logo and Website Name (head2) -->
+    <div class="head2">
+        <img src="public\log.png" alt="Logo" height="80px" width="80px">
+        <div class="website-name" id="website-name">
+            <h1>LEGALPATH</h1>
+        </div>
+        <img src="public\min_law.png" alt="Logo" height="100px" width="300px" class="min_law">
+        
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <ul id="navbar">
+            <li><a href="#" style="font-size: 150%;" id="home-text">Home</a></li>
+            <li><a href="./lawyer/lawyer/lawyer.html" style="font-size: 150%;" id="lawyer-text">Lawyer</a></li>
+            <li><a href="./UnderTrailPrisonerPage/undertrailfinal/undertrail/index.html" style="font-size: 150%;" id="prisoner-text">Prisoner</a></li>
+            <li><a href="#" style="font-size: 150%;" id="judge-text">Judge</a></li>
+            <li><a href="./public/login.html" style="font-size: 150%;" id="login-text">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- SITEMAP Section -->
+    <div id="sitemap-content" style="display:none; padding: 20px; margin-top: 20px;">
+        <h2>SITEMAP</h2> <!-- Displaying "SITEMAP" text -->
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="lawyer.html">Lawyer</a></li>
+            <li><a href="#">Prisoner</a></li>
+            <li><a href="judge.html">Judge</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div> 
+     <!-- Slider Section -->
+     <section class="section">
+        <div class="slider">
+            <div class="rectangle" id="rectangle"><p>Understand the Bail Details</p></div>
+            <div class="slides">
+                <input type="radio" name="radio-btn" id="radio1" checked>
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <div class="slide first">
+                    <img src="public/Law1.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="public/Law3.webp" alt="">
+                </div>
+                <div class="slide">
+                    <img src="public/Law2.avif" alt="">
+                </div>
+                <div class="slide">
+                    <img src="public/Law4.jpeg" alt="">
+                </div>
+                <div class="nav-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+            </div>
+            <div class="nav-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+        </div>
+    </section>
+     <!-- NLP Search Container -->
+     <div class="nlp-container">
+        <!-- Left Side - PDF Link -->
+         <div class="nlp-in">
+        <div class="pdf-link" style="background-color: white;">
+           <img class="moreInfo" src="public\More info.png" style="width: 17%;height:17%">
+            <a href="FIR.pdf" target="_blank" style="background-color: white;color:#9b0620;">Open Bail Details PDF</a>
+        </div>
+
+        <!-- Right Side - NLP Search -->
+        <div class="nlp-search">
+            <input type="text" id="nlpInput" placeholder="Search for legal terms..." style="border: none;">
+            <button onclick="searchNLP()" >Search</button>
+        </div>
+    </div>
+    </div>
+
+    <!-- Search Results Section -->
+    <div class="search-results" id="results">
+        <h3>Search Results:</h3>
+        <p id="resultText"></p>
+        <a id="resultLink" href="#" target="_blank"></a>
+    </div>
+    <div class="Midsection">
+<section class="aboutUs">
+    <section class="content-section">
+    
+    
+        <div class="content1">
+            <div class="paragraph">
+                <h2 class="subheading" id="empowerment-heading">Empowering Individuals with Knowledge</h2>
+                <p id="empowerment-text">
+                    Our platform is committed to educating individuals about their legal rights and providing the tools they need to navigate the judicial system. By simplifying complex legal concepts, we aim to empower every individual to make informed decisions and take control of their circumstances. With access to reliable resources, users can better understand their rights, seek justice, and protect themselves in legal situations.
+                </p>
+            </div>
+    
+            <div class="paragraph">
+                <h2 class="subheading" id="access-heading">Comprehensive Access to Legal Aid</h2>
+                <p id="access-text">
+                    From guidance on undertrial prisoner rights to finding trustworthy legal aid providers, we offer a comprehensive repository of resources. Our goal is to bridge the gap between individuals and the justice system by ensuring everyone has access to the information and support they need to resolve their legal challenges effectively. We believe in creating a more informed and just society for all.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+</section>
+      <!-- Services Section -->
+      <section class="services-section">
+    
+        <div class="services-container">
+            <div class="service-item">
+                <img src="public\UndertrailPrisoners.jpg" alt="Service 1" style="filter:blur(1px);filter:brightness(60%)">
+                <a href="/" style="text-decoration: none;"><h3>Bail And Related Service</h3></a>
+                
+                
+                
+            </div>
+            <div class="service-item">
+                <img src="public\Lawyer.jpg" alt="Service 2" style="filter:blur(1px);filter:brightness(60%)">
+                <h3>Legal Aid Providers</h3>
+               
+                
+            </div>
+            <div class="service-item">
+                <img src="public\Judges.jpg" alt="Service 3" style="filter:blur(1px);filter:brightness(60%)">
+                <h3>Judicial Authorities</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+<!--Services -->
+
+<section class="OurProducts">
+    <div class="container-cards">
+        <h1 class="head">Our Services</h1>
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="item prod1">
+                <img 
+                    src="public\IPCCRPC.webp" >
+                <h2>IPC to CrPC Mapping</h2>
+                <div class="content">
+                    <div class="description">  Our service provides a user-friendly platform to access IPC and CrPC links along with detailed crime insights. It streamlines legal research with accurate and reliable information for professionals and learners. The intuitive interface ensures effortless navigation through complex legal codes and analytics. Empower yourself with accessible legal knowledge and data-driven insights to make informed decisions.
+                       
+                    </div>
+                    <a href="#" class="product-btn">Learn More</a>
+                </div>
+                <div class="highleveldescription">
+                     Intuitive platform connecting IPC and CrPC links with detailed crime insights, ensuring accessible and reliable legal information.
+                </div>
+            </div>
+
+           
+
+            <!-- Product 2 -->
+            <div class="item prod1">
+                <img 
+                    src="public\BailService1.jpg" >
+                <h2>Assistance with Bail </h2>
+                <div class="content">
+                    <div class="description">
+                        Our service offers a clear understanding of what bail is, its purpose, and its importance in the legal system. We provide detailed insights into eligibility criteria, types of bail such as regular, anticipatory, and interim bail, and the step-by-step application process. Users can access relevant legal provisions under IPC and CrPC to make informed decisions. Simplifying complex legal procedures, we empower individuals with the knowledge they need to navigate bail-related matters confidently.  
+                      
+                    </div>
+                    <a href="#" class="product-btn">Learn More</a>
+                </div>
+                <div class="highleveldescription">
+                    Comprehensive support for bail processes, legal requirements, and related insights.
+                </div>
+            </div>
+        
+          <!-- Product 3 -->
+          <div class="item prod1">
+            <img 
+                src="public\BailPetition.jpg" >
+            <h2> Bail Petition Assistance</h2>
+            <div class="content">
+                <div class="description">
+                    Our platform offers professional guidance to draft well-structured and legally sound bail petitions. Users can explore tailored suggestions based on their case details to improve the chances of approval. With a user-friendly interface, you can prepare, review, and submit bail petitions directly through our system. Simplifying the process, we ensure your petition aligns with legal standards and is ready for submission.
+                </div>
+                <a href="#" class="product-btn">Learn More</a>
+            </div>
+            <div class="highleveldescription">
+                Expert suggestions for bail petitions with an option to submit them seamlessly.
+            </div>
+        </div>
+    </div>
+    
+    </div>
+</section>
+
+<div style="width:80%;height:20vh;background-color:aqu;margin:auto;padding:3%;color:#9b0620;">
+    <section class="ipc-crpc-mapping">
+        <h2>IPC to CrPC Mapping</h2>
+        <div>
+        <div style="width: 95%;display:flex;justify-content:center;align-items:center;flex-direction:column;margin-top:1.5%;margin-left:-0.5%">
+        <div style="width: 100%;display:flex;justify-content:center">
+         <input type="text" id="ipcInput" placeholder="Enter IPC section or crime details here..." style="color:#9b0620;width: 80%;height:6vh;padding:10px;font-size:large;border:2px solid #9b0620;color:#9b0620">
+        <button id="searchButton" style="width: 17%;height:9.3vh;background-color:#9b0620;color:white;border:none;font-size:large;font-weight:bolder">Search</button>
+
+    </div>
+   
+    <div id="resulttext" class="resulttext" style="width: 94%;padding:3%;height:auto;color:#9b0620;background-color:#F8F8F8;margin-top:1%;display:none;border:2px solid #9b0620"></div>
+</div>
+</div>
+</section>
+    </div>
+
+  
+<br><br><br><br>
+    <div id="footer-content" style="display:none; padding: 20px; margin-top: 20px;">
+        <h2>FOOTER</h2> <!-- Displaying "FOOTER" text -->
+        <!-- Dynamic footer content will be inserted here by JavaScript -->
+    </div>
+    <!-- FOOTER Section -->
+    <footer>
+        <div class="footer-top">
+            <ul>
+                <li><a href="#">Feedback</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Website Policies</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Contact Us</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Help</a></li>
+                <li style="color:#f0f0f0;">/</li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Website is Owned and Content Managed by
+                <a href="https://lawmin.gov.in/" class="link">Ministry of Law & Justice </a> | Government of India
+            </p>
+            <div class="aicte-section">
+                <p><strong>Inaugurated by:</strong> <a href="https://www.aicte-india.org/" class="link">AICTE</a></p>
+                <p>(All India Council for Technical Education)</p>
+            </div>
+            <div class="footer-logos">
+                <img src="public/law.png" alt="Logo 1" height="200px" width="150px">
+                <img src="public/aicte.png" alt="Logo 2" height="200px" width="150px">
+                <img src="public/moe.png" alt="Logo 2" height="200px" width="150px">
+                <img src="public/tcs.png" alt="Logo 3" height="200px" width="150px">
+                <img src="public/educ.png" alt="Logo 4" height="200px" width="150px">
+            </div>
+            <div class="footer-disclaimer">
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+   
+    
+    
+
+
+    <script>
+        let counter = 1;
+        const slides = document.querySelectorAll('.slides input[type="radio"]');
+        const totalSlides = 4;
+        const rectangle = document.getElementById('rectangle'); // Rectangle element
+        const slideContents = [
+            "Understand the Bail Details",
+            "Know Your Rights for Bail",
+            "Step-by-Step Bail Process",
+            "Important Legal Facts About Bail"
+        ]; // Content for each slide
+        let intervalId;
+
+        // Function to update the rectangle content
+        function updateRectangle() {
+            rectangle.innerHTML = `<p>${slideContents[counter - 1]}</p>`;
+        }
+
+        // Function to start the automatic slider
+        function startSlider() {
+            intervalId = setInterval(() => {
+                document.getElementById('radio' + counter).checked = true;
+                updateRectangle(); // Update rectangle content
+                counter++;
+                if (counter > totalSlides) {
+                    counter = 1;
+                }
+            }, 3000); 
+        }
+
+        // Function to stop the automatic slider
+        function stopSlider() {
+            clearInterval(intervalId);
+        }
+
+        // Add click event listeners to manual navigation buttons
+        slides.forEach((slide, index) => {
+            slide.addEventListener('click', () => {
+                stopSlider(); 
+                counter = index + 1; 
+                document.getElementById('radio' + counter).checked = true;
+                updateRectangle(); // Update rectangle content
+                startSlider(); 
+            });
+        });
+
+        // Add event listeners to radio buttons for manual navigation
+        document.getElementById('radio1').addEventListener('change', () => {
+            counter = 1;
+            updateRectangle(); // Update rectangle content
+        });
+        document.getElementById('radio2').addEventListener('change', () => {
+            counter = 2;
+            updateRectangle(); // Update rectangle content
+        });
+        document.getElementById('radio3').addEventListener('change', () => {
+            counter = 3;
+            updateRectangle(); // Update rectangle content
+        });
+        document.getElementById('radio4').addEventListener('change', () => {
+            counter = 4;
+            updateRectangle(); // Update rectangle content
+        });
+
+        // Start the slider on page load
+        startSlider();
+
+
+
+       // Sample legal terms and their corresponding descriptions and links
+const legalTerms = {
+    "bail": {
+        "description": "Bail is the temporary release of an accused person awaiting trial.",
+        "link": "bail_details.pdf"
+    },
+    "contract": {
+        "description": "A contract is a legally binding agreement between parties.",
+        "link": "contract_details.html"
+    },
+    "court": {
+        "description": "A court is a tribunal presided over by a judge or magistrate.",
+        "link": "court_details.pdf"
+    },
+    "rights": {
+        "description": "Rights are legal entitlements or freedoms granted by law.",
+        "link": "rights_details.html"
+    },
+    "laws": {
+        "description": "Laws are the system of rules that a particular country or community recognizes.",
+        "link": "laws_details.pdf"
+    },
+    "types of bail": {
+        "description": "Types of bail include regular bail, anticipatory bail, and interim bail.",
+        "link": "types_of_bail_details.pdf"
+    },
+    "bailable offenses": {
+        "description": "Bailable offenses are those where the accused has the right to be released on bail upon fulfilling conditions.",
+        "link": "bailable_offenses_details.html"
+    },
+    "nonbailable offenses": {
+        "description": "Nonbailable offenses are those where granting bail is at the discretion of the court.",
+        "link": "nonbailable_offenses_details.pdf"
+    },
+    "ipc code": {
+        "description": "IPC code refers to the Indian Penal Code, which outlines offenses and their punishments.",
+        "link": "ipc_code_details.html"
+    },
+    "crpc code": {
+        "description": "CRPC code refers to the Code of Criminal Procedure, which governs criminal law procedure in India.",
+        "link": "crpc_code_details.pdf"
+    },
+    "bail bond": {
+        "description": "A bail bond is a written agreement ensuring the accused will appear in court when required.",
+        "link": "bail_bond_details.html"
+    },
+    "surety bond": {
+        "description": "A surety bond is a promise by a third party to cover obligations if the accused fails to appear in court.",
+        "link": "surety_bond_details.pdf"
+    },
+    "regular bail": {
+        "description": "Regular bail is granted to an accused person after arrest, allowing temporary release while the trial is pending.",
+        "link": "regular_bail_details.pdf"
+    },
+    "anticipatory bail": {
+        "description": "Anticipatory bail is granted to a person in anticipation of arrest, ensuring protection from detention.",
+        "link": "anticipatory_bail_details.html"
+    },
+    "interim bail": {
+        "description": "Interim bail is a temporary bail granted for a short duration, usually pending the hearing of a regular or anticipatory bail application.",
+        "link": "interim_bail_details.pdf"
+    }
+};
+
+
+
+// Function to handle the NLP search
+function searchNLP() {
+    const query = document.getElementById('nlpInput').value.toLowerCase();
+    const resultsContainer = document.getElementById('results');
+    const resultText = document.getElementById('resultText');
+    const resultLink = document.getElementById('resultLink');
+
+    // Check if the query matches any predefined legal terms
+    const result = legalTerms[query];
+
+    if (result) {
+        // If a match is found, display the description and dynamic link
+        resultText.textContent = result.description;
+        resultLink.href = result.link;  // Set the dynamic link
+        resultsContainer.classList.add('show');  // Show the results section with animation
+    } else {
+        // If no match is found, redirect to Google search
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;  // Google search link
+    }
+}
+
+
+
+//Navbar
+// Function to show Sitemap content dynamically
+document.getElementById('sitemap-link').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default anchor behavior for "Sitemap"
+
+    const navbarItems = document.querySelectorAll('#navbar li a');
+    const footerLinks = document.querySelectorAll('.footer-top ul li a');
+    const sitemapContent = document.getElementById('sitemap-content');
+    const footerContent = document.getElementById('footer-content');
+
+    sitemapContent.innerHTML = ''; // Clear existing content
+    footerContent.innerHTML = '';  // Clear footer content
+
+    // Add navbar items to the sitemap
+    const sitemapTitle = document.createElement('h3');
+    sitemapTitle.textContent = 'SITEMAP';
+    sitemapContent.appendChild(sitemapTitle);
+    navbarItems.forEach((item) => {
+        const link = document.createElement('a');
+        link.textContent = item.textContent;
+        link.href = item.href;
+        link.style.display = 'block';
+        link.style.color = 'black';
+        link.style.textDecoration = 'none';
+        link.style.fontWeight = 'bold';
+        link.style.paddingLeft = '20px';
+        sitemapContent.appendChild(link);
+    });
+
+    // Add footer items to the sitemap
+    const footerTitle = document.createElement('h3');
+    footerTitle.textContent = 'FOOTER';
+    footerContent.appendChild(footerTitle);
+    footerLinks.forEach((item) => {
+        const link = document.createElement('a');
+        link.textContent = item.textContent;
+        link.href = item.href;
+        link.style.display = 'block';
+        link.style.color = 'black';
+        link.style.textDecoration = 'none';
+        link.style.fontWeight = 'bold';
+        link.style.paddingLeft = '20px';
+        footerContent.appendChild(link);
+    });
+
+    // Show the sitemap and footer content
+    sitemapContent.style.display = 'block';
+    footerContent.style.display = 'block';
+});
+
+// Language Dropdown Toggle Functionality
+document.getElementById('language-link').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default link behavior
+
+    const languageContainer = document.querySelector('.language-container');
+    languageContainer.classList.toggle('active'); // Toggle dropdown visibility
+});
+
+/*Mapping*/
+
+       
+          
+document.getElementById("searchButton").addEventListener("click", async () => {
+    const input = document.getElementById("ipcInput").value;
+    document.getElementById("resulttext").style.display = "block";
+    document.getElementById("resulttext").innerHTML= `<img src="load.gif" style="width:5%; height:5%;"></img>`;
+
+    console.log(input);
+    if (!input) {
+      alert("Please enter case details or an IPC section.");
+      return;
+    }
+  
+    try {
+      const response = await fetch("http://localhost:3000/queryGemini", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ caseDetails: input }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+  
+      const data = await response.json();
+     
+      
+      // Extract the text from the response and clean it up
+      let rawText = data.generatedText?.parts[0]?.text || "No content generated.";
+      let cleanedText = cleanText(rawText);
+      console.log(cleanedText); // Debug: Check the response structure
+      // Display the cleaned-up result in the #results div
+      document.getElementById("resulttext").innerText = cleanedText;
+      
+  
+    } catch (error) {
+      console.error("Error fetching results:", error);
+      document.getElementById("resulttext").innerText = "An error occurred while processing your request.";
+    }
+  });
+  
+  // Function to clean the text and remove Markdown-style delimiters
+  function cleanText(text) {
+    // Remove bold formatting (**) and italic formatting (*)
+    let cleanedText = text.replace(/\*\*(.*?)\*\*/g, "$1");  // Remove **bold**
+    cleanedText = cleanedText.replace(/\*(.*?)\*/g, "$1");   // Remove *italic*
+    
+    // Remove other unwanted characters (like links, etc.)
+    cleanedText = cleanedText.replace(/[`~]/g, '');  // Remove any code-like characters
+    cleanedText = cleanedText.replace(/\n/g, ' ');   // Optional: Replace newlines with spaces
+  
+    return cleanedText.trim();  // Clean up any extra spaces at the beginning or end
+  }
+  function switchLanguage(lang) {
+    const langText = translations[lang];
+    for (const [key, value] of Object.entries(langText)) {
+        const element = document.getElementById(key);
+        if (element) {
+            element.textContent = value;
+        }
+    }
+}
+const translations = {
+    en: {
+        "website-name": "LEGALPATH",
+        "sitemap-link": "Sitemap",
+        "home-text": "Home",
+        "lawyer-text": "Lawyer",
+        "prisoner-text": "Prisoner",
+        "judge-text": "Judge",
+        "login-text": "Login",
+        "empowerment-heading": "Empowering Individuals with Knowledge",
+        "empowerment-text": "Our platform is committed to educating individuals about their legal rights and providing the tools they need to navigate the judicial system. By simplifying complex legal concepts, we aim to empower every individual to make informed decisions and take control of their circumstances. With access to reliable resources, users can better understand their rights, seek justice, and protect themselves in legal situations.",
+        "access-heading": "Comprehensive Access to Legal Aid",
+        "access-text": "From guidance on undertrial prisoner rights to finding trustworthy legal aid providers, we offer a comprehensive repository of resources. Our goal is to bridge the gap between individuals and the justice system by ensuring everyone has access to the information and support they need to resolve their legal challenges effectively. We believe in creating a more informed and just society for all.",
+        "lawyer-details": "Find verified lawyers for your legal needs, get expert advice, and connect with professionals specializing in your case type.",
+        "judge-details": "Understand the judicial process with insights on case proceedings, court structure, and judge decisions to better navigate the system.",
+    },
+    ta: {
+        "website-name": "சட்டபாதை",
+        "sitemap-link": "சட்டவிடை",
+        "home-text": "முகப்பு",
+        "lawyer-text": "வழக்கறிஞர்",
+        "prisoner-text": "கைதிகள்",
+        "judge-text": "திபாகம்",
+        "login-text": "உள்நுழைவு",
+        "empowerment-heading": "அறிவுடன் தனிநபர்களை அதிகாரமளித்தல்",
+        "empowerment-text": "எங்கள் தளம் தனிநபர்களுக்கு அவர்களின் சட்ட உரிமைகள் குறித்து கல்வி கொடுப்பதற்கும், நீதிமன்ற அமைப்பை வழிநடத்த தேவையான கருவிகளை வழங்குவதற்கும் அர்ப்பணிக்கப்பட்டது. சிக்கலான சட்ட கருத்துக்களை எளிதாக்குவதன் மூலம், ஒவ்வொரு நபருக்கும் அறிவாளித்தன்மையுடன் முடிவுகளை எடுக்கவும், சூழ்நிலைகளை கட்டுப்படுத்தவும் உதவுவதே எங்கள் நோக்கம். நம்பகமான வளங்களை அணுகுவதன் மூலம், பயனர் தனது உரிமைகளைப் புரிந்து கொள்ளவும், நீதி கோரவும், சட்ட சூழல்களில் தன்னை பாதுகாக்கவும் முடியும்.",
+        "access-heading": "சட்ட உதவிக்கு விரிவான அணுகல்",
+        "access-text": "தண்டனைக்குள் கைதிகள் உரிமைகள் பற்றிய வழிகாட்டுதல் முதல் நம்பகமான சட்ட உதவிக்கான வழங்குநர்களை கண்டறிதல் வரை, எங்கள் தளம் பலவகையான வளங்களை வழங்குகிறது. எங்கள் நோக்கம் தனிநபர்களுக்கும் நீதிமன்ற அமைப்பிற்கும் இடையேயான இடைவெளியை நிரப்புவது ஆகும், அனைவரும் அவர்களுடைய சட்ட சிக்கல்களை பயனுள்ள முறையில் தீர்க்க தேவையான தகவல்களையும் ஆதரவையும் பெறுவதை உறுதிசெய்வதே எங்கள் நோக்கம்.",
+        "lawyer-details": "உங்கள் சட்ட தேவைகளுக்கு சான்றளிக்கப்பட்ட வழக்கறிஞர்களைக் கண்டறியவும், சிறந்த ஆலோசனையைப் பெறவும், உங்கள் வழக்கின் வகைக்கு தகுந்த நிபுணர்களுடன் இணைக்கவும்.",
+        "judge-details": "வழக்கின் நடைமுறை, நீதிமன்ற அமைப்பு, மற்றும் நீதிபதிகளின் தீர்மானங்களைப் பற்றி விளக்கங்களைப் பெற்று நீதிமன்ற அமைப்பைச் சரியாக வழிநடத்த உதவுங்கள்.",
+    },
+    hin: {
+        "website-name": "लीगलपथ",
+        "sitemap-link": "साइटमैप",
+        "home-text": "मुख्यपृष्ठ",
+        "lawyer-text": "वकील",
+        "prisoner-text": "कैदी",
+        "judge-text": "न्यायाधीश",
+        "login-text": "लॉगिन",
+        "empowerment-heading": "ज्ञान के साथ व्यक्तियों को सशक्त बनाना",
+        "empowerment-text": "हमारा प्लेटफ़ॉर्म व्यक्तियों को उनके कानूनी अधिकारों के बारे में शिक्षित करने और न्यायिक प्रणाली में दिशा-निर्देश देने वाले उपकरण प्रदान करने के लिए प्रतिबद्ध है। जटिल कानूनी अवधारणाओं को सरल बनाकर, हम प्रत्येक व्यक्ति को सूचित निर्णय लेने और अपनी परिस्थितियों पर नियंत्रण करने के लिए सशक्त बनाना चाहते हैं। विश्वसनीय संसाधनों की पहुंच के साथ, उपयोगकर्ता अपने अधिकारों को बेहतर तरीके से समझ सकते हैं, न्याय की मांग कर सकते हैं और कानूनी स्थितियों में अपनी रक्षा कर सकते हैं।",
+        "access-heading": "कानूनी सहायता के लिए व्यापक पहुंच",
+        "access-text": "अंडरट्रायल कैदी के अधिकारों पर मार्गदर्शन से लेकर भरोसेमंद कानूनी सहायता प्रदाताओं को खोजने तक, हम संसाधनों का एक व्यापक भंडार प्रदान करते हैं। हमारा उद्देश्य व्यक्तियों और न्याय प्रणाली के बीच की खाई को पाटना है, यह सुनिश्चित करना है कि हर कोई अपने कानूनी मुद्दों को प्रभावी ढंग से हल करने के लिए आवश्यक जानकारी और समर्थन तक पहुंच सके। हम सभी के लिए एक अधिक सूचित और न्यायपूर्ण समाज बनाने में विश्वास करते हैं।",
+        "lawyer-details": "अपने कानूनी मामलों के लिए प्रमाणित वकीलों को खोजें, विशेषज्ञ सलाह प्राप्त करें, और अपने केस प्रकार में विशेषज्ञ पेशेवरों से जुड़ें।",
+        "judge-details": "न्यायिक प्रक्रिया को समझने के लिए मामले की कार्यवाही, अदालत की संरचना और न्यायाधीश के निर्णयों पर जानकारी प्राप्त करें और प्रणाली को बेहतर तरीके से समझें।",
+    },
+};
+
+  document.getElementById("lang-en").addEventListener("click", function() {
+    switchLanguage("en");
+});
+
+document.getElementById("lang-ta").addEventListener("click", function() {
+    switchLanguage("ta");
+});
+document.getElementById("lang-hin").addEventListener("click", function() {
+    switchLanguage("hin");
+});
+
+// Default language on page load
+window.onload = () => {
+    switchLanguage("en"); // Default to English
+};
+  
+    </script>
+    <script>
+        window.embeddedChatbotConfig = {
+        chatbotId: "wPZvs1CLtFupy-6IiLkWb",
+        domain: "www.chatbase.co"
+        }
+        </script>
+        <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="wPZvs1CLtFupy-6IiLkWb"
+        domain="www.chatbase.co"
+        defer>
+        </script>
+</body>
+</html>

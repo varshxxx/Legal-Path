@@ -1,0 +1,238 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Records Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .view-files-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .pdf-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 90vh;
+        }
+        .pdf-viewer {
+            width: 48%;
+            height: 100%;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+  
+    <div id="cards-page">
+        <div class="card-container" id="card-container">
+       
+        </div>
+    </div>
+
+  
+    <div id="pdf-viewer-page" style="display: none;">
+        <div class="pdf-container">
+            <div id="pdf1" class="pdf-viewer"></div>
+            <div id="pdf2" class="pdf-viewer"></div>
+        </div>
+        <div class="controls">
+            <button onclick="goBackToCards()">Back to Records</button>
+        </div>
+    </div>
+    <div class="button">
+        <button class="generate_suggestion">Generate Suggestion</button>
+    </div>
+    <div id="result" style="margin-top: 20px; white-space: pre-wrap;"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        // Base URL of your backend server
+        const API_BASE_URL = 'http://localhost:3001';
+
+        // Fetch and display cards
+        async function fetchPDFRecords() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/pdf-records`);
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const records = await response.json();
+                const cardContainer = document.getElementById('card-container');
+                
+                // Clear any existing cards
+                cardContainer.innerHTML = '';
+                
+                records.forEach(record => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <h3>Record ID: ${record.id}</h3>
+                        <p>File 1: ${record.name1}</p>
+                        <p>File 2: ${record.name2}</p>
+                        <button class="view-files-btn" onclick="viewFiles(${record.id})">View Files</button>
+                    `;
+                    cardContainer.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error fetching PDF records:', error);
+                alert('Failed to fetch PDF records. Please check the server connection.');
+            }
+        }
+
+        // View files for a specific record
+        function viewFiles(recordId) {
+            // Hide cards page
+            document.getElementById('cards-page').style.display = 'none';
+            
+            // Show PDF viewer page
+            const pdfViewerPage = document.getElementById('pdf-viewer-page');
+            pdfViewerPage.style.display = 'block';
+
+            // Load PDFs
+            loadPDFs(recordId);
+        }
+
+        // Render PDF using PDF.js
+        async function renderPDF(pdfUrl, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Clear previous content
+
+            try {
+                // Fetch PDF data
+                const response = await fetch(pdfUrl);
+                const pdfBlob = await response.blob();
+                const pdfData = await pdfBlob.arrayBuffer();
+
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument({data: pdfData});
+                const pdf = await loadingTask.promise;
+
+                // Render first page
+                const page = await pdf.getPage(1);
+                const scale = 1.5;
+                const viewport = page.getViewport({scale: scale});
+
+                // Prepare canvas
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render page
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                await page.render(renderContext);
+
+                // Add canvas to container
+                container.appendChild(canvas);
+            } catch (error) {
+                console.error('Error rendering PDF:', error);
+                container.innerHTML = 'Could not load PDF';
+            }
+        }
+
+        // Load PDFs for a specific record
+        function loadPDFs(recordId) {
+            // PDF 1
+            renderPDF(`${API_BASE_URL}/download/${recordId}/pdf1`, 'pdf1');
+
+            // PDF 2
+            renderPDF(`${API_BASE_URL}/download/${recordId}/pdf2`, 'pdf2');
+        }
+
+        // Go back to cards page
+        function goBackToCards() {
+            // Hide PDF viewer page
+            document.getElementById('pdf-viewer-page').style.display = 'none';
+            
+            // Show cards page
+            document.getElementById('cards-page').style.display = 'block';
+        }
+
+        // Fetch records when page loads
+        window.onload = fetchPDFRecords;
+        async function queryGeminiEndpoint() {
+            const endpointUrl = 'http://localhost:3000/query-gemini'; // Adjust port if needed
+          
+            try {
+              // Display loading message
+              const resultDiv = document.getElementById('result');
+              resultDiv.innerHTML = 'Processing your request, please wait...';
+          
+              // Make a POST request to the endpoint
+              const response = await fetch(endpointUrl, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+              });
+          
+              // Check for HTTP errors
+              if (!response.ok) {
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+              
+              }
+              const data = await response.json();
+              console.log(response);
+          
+              // Display the generated suggestion
+              if (data.suggestion) {
+                resultDiv.innerHTML =` <h3>Bail Suggestion and Prediction</h3><pre>${data.suggestion}</pre>`;
+              } else {
+                resultDiv.innerHTML = 'No suggestion generated.';
+              }
+            } catch (error) {
+              console.log('Error:', error);
+              document.getElementById('result').innerHTML = `Failed to process request: ${error.message}`;
+            }
+          }
+          
+          document.addEventListener('DOMContentLoaded', () => {
+            const button = document.querySelector('.generate_suggestion');
+            if (button) {
+              button.addEventListener('click', queryGeminiEndpoint);
+            }
+          });
+    </script>
+</body>
+</html> 

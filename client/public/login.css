@@ -1,0 +1,233 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+::placeholder {
+    color: rgb(255, 255, 255);
+    opacity: 50%;
+  }
+  *:focus {
+    outline: none;
+}
+
+  :root {
+    --red:#9b0620;
+    --white:white;
+    --grey:#abb8c3;
+    --whitegrey:#f6f3ee;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    height: 100px;
+    color: white;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Navbar */
+nav {
+    background-color: #cf2e2e;
+    color: white;
+    padding: 10px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+}
+
+nav ul li a:hover {
+    background-color: #9e1616;
+    border-radius: 5px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    padding: 10px;
+    width: 150px;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #003366;
+}
+
+.dropdown-menu li a:hover {
+    color: #00509E;
+}
+
+/* General Header Styles */
+.btn {
+    display: inline-block;
+    padding: 3px 20px;
+    border-left: .1px solid black;
+    border-right: .1px solid black;
+    background-color: #f3eeee;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c5c9d5;
+}
+
+/* Head1 Styles */
+.head1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left:100px ;
+    padding-right: 150px;
+    background-color: #f3eeee;
+}
+.min_law{
+    padding-left: 700px;
+}
+.head1 .left-content,
+.head1 .right-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Head2 Styles */
+.head2 {
+    display: flex;
+    align-items: center;
+    padding: 20px 100px;
+    background-color: white;
+}
+
+.head2 img {
+    height: 80px;
+    margin-right: 20px;
+}
+
+.head2 .website-name h1 {
+    font-size: 24px;
+    color: black;
+    margin: 0;
+}
+
+/* Dropdown Styles */
+.language-container {
+    position: relative;
+}
+
+#language-dropdown {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: white;
+    border: 1px solid black;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+    z-index: 10;
+}
+
+#language-dropdown li {
+    margin: 0px 0;
+}
+
+#language-dropdown li a {
+    display: block;
+    padding: 0px 0px;
+    text-decoration: none;
+    color: black;
+}
+
+#language-dropdown li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Display Dropdown when Active */
+.language-container.active #language-dropdown {
+    display: block;
+}
+
+/* Sitemap Styles */
+#sitemap-content {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: white;
+}
+
+#sitemap-content a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding-left: 20px;
+    display: block;
+}
+
+#sitemap-content a::before {
+    content: "> ";
+    padding-left: 10px;
+}
+body{
+    overflow-y: hidden;
+}
+.part{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    margin: auto;
+}
+.part1{
+    width: 50%;
+    height: 100%;
+    background-color: aqua;
+    background-image: url(logbg.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.part2{
+    display: flex;
+    width: 60%;
+    height: 100%;
+    background-color: #9b0620;
+    justify-content: center;
+    align-items: center;
+}
